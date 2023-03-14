@@ -1,0 +1,308 @@
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>GenerativeDiffusionPrior</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <base href="/"> -->
+
+    <link rel="icon" type="image/png" href="../img/newyork.ico">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link href="css/twentytwenty.css" rel="stylesheet">
+    <link href="css/foundation.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Theme Stylesheets -->
+    <!-- <link href="css/theme.css" rel="stylesheet"> -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110862391-3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-110862391-3');
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h1 class="col-md-12 text-center">
+                <!-- CityNeRF: Building NeRF at City Scale -->
+                <strong>3DTrans: Autonomous Driving-oriented  <br> Transfer Learning Codebase</strong>
+                <!-- <small>CVPR 2023</small> -->
+            </h1>
+            <!-- <h4 style="text-align:center">CVPR 2023</h4> -->
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div style="margin-bottom: 0.7em; margin-top:0.2em" class="authors">
+                    <a style="color:#000000;" href="https://bobrown.github.io/boZhang.github.io/">Bo Zhang<sup>1</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a style="color:#000000;" href="https://jiakangyuan.github.io/">Jiakang Yuan<sup>2</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a style="color:#000000;" href="">Xiangchao Yan<sup>1</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a style="color:#000000;" href="https://scholar.google.com/citations?user=skQROj8AAAAJ&hl=zh-CN&oi=ao">Ben Fei<sup>2</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a style="color:#000000;" href="https://siyuanhuang95.github.io">Siyuan Huang<sup>3</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+
+                <div style="margin-bottom: 0.5em;" class="affiliations">
+                    <a href="https://www.shlab.org.cn/">Shanghai AI Laboratory<sup>1</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="http://fudan.edu.cn/">Fudan University<sup>2</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </br>
+                    <a href="https://www.mmlab-ntu.com/">Shanghai Jiaotong University<sup>3</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+                </div>
+<!-- 
+                <div style="margin-bottom: 0.7em;" class="col-md-12 text-center">
+                    *denotes correspondant authors
+                </div> -->
+
+            </div>
+        </div>
+
+        <div style="margin-bottom: 0.7em;" class="row">
+                <div class="col-md-8 col-md-offset-2 text-center">
+                    <ul class="nav nav-pills nav-justified">
+                        <li>
+                            <!-- <a href="https://arxiv.org/abs/2112.05504"> -->
+                            <image src="./img/paper.png" height="50px"><br>
+                                <h5><strong>Uni3D</strong></h5>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://arxiv.org/abs/2303.05886">
+                            <image src="./img/paper.png" height="50px"><br>
+                                <h5><strong>Bi3D</strong></h5>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://arxiv.org/abs/2212.10390">
+                            <image src="./img/paper.png" height="50px"><br>
+                                <h5><strong>UniDA3D</strong></h5>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/Fayeben/GenerativeDiffusionPrior">
+                            <image src="./img/github_pad.png" height="50px"><br>
+                                <h5><strong>Code</strong></h5>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2 class="col-md-12 text-center">
+                    Uni3D: A Unified Baseline for Multi-dataset 3D Object Detection
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Abstract
+                </h3>
+                <!-- <image src="img/Uni3D-teaser" class="img-responsive" alt="overview"><br> -->
+                <p class="text-justify">
+                    Current 3D object detection models follow a single dataset-specific training and testing paradigm, which often faces a serious detection accuracy drop when they are directly deployed in another dataset. In this paper, we study the task of training a unified 3D detector from multiple datasets. We observe that this appears to be a challenging task, which is mainly due to that these datasets present substantial data-level differences and taxonomylevel variations caused by different LiDAR types and data acquisition standards. Inspired by such observation, we present a Uni3D which leverages a simple data-level correction operation and a designed semantic-level couplingand- recoupling module to alleviate the unavoidable datalevel and taxonomy-level differences, respectively. Our method is simple and easily combined with many 3D object detection baselines such as PV-RCNN and Voxel-RCNN, enabling them to effectively learn from multiple off-theshelf 3D datasets to obtain more discriminative and generalizable representations. Experiments are conducted on many dataset consolidation settings including WaymonuScenes, nuScenes-KITTI, Waymo-KITTI, and WaymonuScenes-KITTI consolidations. Their results demonstrate that Uni3D exceeds a series of individual detectors trained on a single dataset, with a 1.04× parameter increase over a selected baseline detector. We expect this work will inspire the research of 3D generalization since it will push the limits of perceptual performance.             
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Framework
+                </h3>
+                <image src="img/Uni3D.png" class="img-responsive" alt="overview"><br>
+                <p class="text-justify">
+                    <strong> The overview of Uni3D including: 1) point range alignment, 2) parameter-shared 3D and 2D backbones with data-level correction operation, 3) semantic-level feature coupling-and-recoupling module, and 4) dataset-specific detection heads. C.A. denotes Coordinate-origin Alignment to reduce the adverse effects caused by point range alignment, and S.A. is the designed Statistics-level Alignment. 
+                    </strong>
+                    <!-- (
+                        <a style="color:#000000;" href="https://www.google.com/help/terms_maps/">
+                        ©2021 Google
+                        </a>
+                        ) -->
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2 class="col-md-12 text-center">
+                    Bi3D: Bi-domain Active Learning for Cross-domain 3D Object Detection
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Abstract
+                </h3>
+                <br>
+                <!-- <image src="img/Uni3D-teaser" class="img-responsive" alt="overview"><br> -->
+                <p class="text-justify">
+                    Unsupervised Domain Adaptation (UDA) technique has been explored in 3D cross-domain tasks recently. Though preliminary progress has been made, the performance gap between the UDA-based 3D model and the supervised one trained with fully annotated target domain is still large. This motivates us to consider selecting partial-yetimportant target data and labeling them at a minimum cost, to achieve a good trade-off between high performance and low annotation cost. To this end, we propose a Bi-domain active learning approach, namely Bi3D, to solve the crossdomain 3D object detection task. The Bi3D first develops a domainness-aware source sampling strategy, which identifies target-domain-like samples from the source domain to avoid the model being interfered by irrelevant source data. Then a diversity-based target sampling strategy is developed, which selects the most informative subset of target domain to improve the model adaptability to the target domain using as little annotation budget as possible. Experiments are conducted on typical cross-domain adaptation scenarios including cross-LiDAR-beam, cross-country, and crosssensor, where Bi3D achieves a promising target-domain detection accuracy (89.63% on KITTI) compared with UDAbased work (84.29%), even surpassing the detector trained on the full set of the labeled target domain (88.98%).             
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Framework
+                </h3>
+                <image src="img/Bi3D.png" class="img-responsive" alt="overview"><br>
+                <p class="text-justify">
+                    <strong> The overview of the proposed Bi3D, which employs PV-RCNN as our baseline and consists of domainness-aware source sampling strategy and diversity-based target sampling strategy. The target-domain-like source data are first selected by the learned domainness score, and then the detector is fine-tuned on the selected source domain data. Next, diverse and representative target data are selected using a similarity bank, and then annotated by an oracle. Finally, the detector is fine-tuned on both the selected source and target data. 
+                    </strong>
+                    <!-- (
+                        <a style="color:#000000;" href="https://www.google.com/help/terms_maps/">
+                        ©2021 Google
+                        </a>
+                        ) -->
+                </p>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h2 class="col-md-12 text-center">
+                    UniDA3D: Unified Domain Adaptive 3D Semantic Segmentation Pipeline
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Abstract
+                </h3>
+                <br>
+                <!-- <image src="img/Uni3D-teaser" class="img-responsive" alt="overview"><br> -->
+                <p class="text-justify">
+                    State-of-the-art 3D semantic segmentation models are trained on off-the-shelf public benchmarks, but they will inevitably face the challenge of recognition accuracy drop when these well-trained models are deployed to a new domain. In this paper, we introduce a Unified Domain Adaptive 3D semantic segmentation pipeline (UniDA3D) to enhance the weak generalization ability, and bridge the point distribution gap between domains. Different from previous studies that only focus on a single adaptation task, UniDA3D can tackle several adaptation tasks in 3D segmentation field, by designing a unified source-andtarget active sampling strategy, which selects a maximallyinformative subset from both source and target domains for effective model adaptation. Besides, benefiting from the rise of multi-modal 2D-3D datasets, UniDA3D investigates the possibility of achieving a multi-modal sampling strategy, by developing a cross-modality feature interaction module that can extract a representative pair of image and point features to achieve a bi-directional image-point feature interaction for safe model adaptation. Experimentally, UniDA3D is verified to be effective in many adaptation tasks including: 1) unsupervised domain adaptation, 2) unsupervised few-shot domain adaptation; 3) active domain adaptation. Their results demonstrate that, by easily coupling UniDA3D with off-the-shelf 3D segmentation baselines, domain generalization ability of these baselines can be enhanced.             
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Framework
+                </h3>
+                <image src="img/UniDA3D.png" class="img-responsive" alt="overview"><br>
+                <p class="text-justify">
+                    <strong> The network architecture of UniDA3D, which consists of a 3D segmentation baseline, the cross-modality feature interaction module, and the active sampling operation. The 3D segmentation baseline comprises a 2D U-Net-Style ConvNet backbone, which takes an image as input, and a 3D U-Net-Style SparseConvNet backbone, which receives a point cloud as input. Cross-modality feature interaction module can leverage the features to exploit a representative pair of image features and point cloud features to achieve a bi-directional image-point feature interaction. The last active sampling operation utilizes the interactive features to perform both the source-domain sampling and target-domain sampling via the unified module. 
+                    </strong>
+                    <!-- (
+                        <a style="color:#000000;" href="https://www.google.com/help/terms_maps/">
+                        ©2021 Google
+                        </a>
+                        ) -->
+                </p>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    BibTeX
+                </h3>
+                <div class="form-group col-md-10 col-md-offset-1">
+                    <textarea id="bibtex" class="form-control" readonly>
+@inproceedings{}
+}
+</textarea>
+<!-- @article{xiangli2021citynerf,
+    title={CityNeRF: Building NeRF at City Scale},
+    author={Xiangli, Yuanbo and Xu, Linning and Pan, Xingang and Zhao, Nanxuan and Rao, Anyi and Theobalt, Christian and Dai, Bo and Lin, Dahua},
+    journal={arXiv preprint arXiv:2112.05504},
+    year={2021}
+} -->
+                </div>
+            </div>
+        </div>
+        <!-- <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Acknowledgements
+                </h3>
+                <p class="text-justify">
+                
+                The website template was borrowed from <a href="http://mgharbi.com/">Michaël Gharbi</a>.
+                </p>
+            </div>
+        </div> -->
+    </div>
+</body>
+
+	<script type="text/javascript">
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        // Next/previous controls
+        function plusSlides(n) {
+        showSlides(slideIndex += n);
+        }
+
+        // Thumbnail image controls
+        function currentSlide(n) {
+        showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+        }
+	</script>
+
+
+
+    <!-- Image Slider Javascripts -->
+    <script src="js/jquery.event.move.js"></script>
+    <script src="js/jquery.twentytwenty.js"></script>
+    <script>
+        $(window).on('load',function() {
+            $("#images").twentytwenty();
+        });
+    </script>
+    <script>
+        $(function(){
+            $(".twentytwenty-container[data-orientation!='vertical']").twentytwenty({default_offset_pct: 0.49, before_label: 'Before', after_label: 'After'});
+        });
+    </script>
+</html>
