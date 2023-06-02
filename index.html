@@ -98,9 +98,9 @@
                             </a>
                         </li>
                         <li>
-                            <a href="https://arxiv.org/abs/2212.10390">
+                            <a href="https://arxiv.org/abs/2306.00612">
                             <image src="./img/paper.png" height="50px"><br>
-                                <h5><strong>UniDA3D</strong></h5>
+                                <h5><strong>AD-PT</strong></h5>
                             </a>
                         </li>
                         <li>
@@ -194,7 +194,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h2 class="col-md-12 text-center">
-                    UniDA3D: Unified Domain Adaptive 3D Semantic Segmentation Pipeline
+                    AD-PT: Autonomous Driving Pre-Training with Large-scale Point Cloud Dataset
                 </h2>
             </div>
         </div>
@@ -206,7 +206,7 @@
                 <br>
                 <!-- <image src="img/Uni3D-teaser" class="img-responsive" alt="overview"><br> -->
                 <p class="text-justify">
-                    State-of-the-art 3D semantic segmentation models are trained on off-the-shelf public benchmarks, but they will inevitably face the challenge of recognition accuracy drop when these well-trained models are deployed to a new domain. In this paper, we introduce a Unified Domain Adaptive 3D semantic segmentation pipeline (UniDA3D) to enhance the weak generalization ability, and bridge the point distribution gap between domains. Different from previous studies that only focus on a single adaptation task, UniDA3D can tackle several adaptation tasks in 3D segmentation field, by designing a unified source-andtarget active sampling strategy, which selects a maximallyinformative subset from both source and target domains for effective model adaptation. Besides, benefiting from the rise of multi-modal 2D-3D datasets, UniDA3D investigates the possibility of achieving a multi-modal sampling strategy, by developing a cross-modality feature interaction module that can extract a representative pair of image and point features to achieve a bi-directional image-point feature interaction for safe model adaptation. Experimentally, UniDA3D is verified to be effective in many adaptation tasks including: 1) unsupervised domain adaptation, 2) unsupervised few-shot domain adaptation; 3) active domain adaptation. Their results demonstrate that, by easily coupling UniDA3D with off-the-shelf 3D segmentation baselines, domain generalization ability of these baselines can be enhanced.             
+                    It is a long-term vision for Autonomous Driving (AD) community that the perception models can learn from a large-scale point cloud dataset, to obtain unified representations that can achieve promising results on different tasks or benchmarks. Previous works mainly focus on the self-supervised pre-training pipeline, meaning that they perform the pre-training and fine-tuning on the same benchmark, which is difficult to attain the performance scalability and cross-dataset application for the pre-training checkpoint. In this paper, for the first time, we are committed to building a large-scale pre-training point-cloud dataset with diverse data distribution, and meanwhile learning generalizable representations from such a diverse pre-training dataset. We formulate the point-cloud pre-training task as a semi-supervised problem, which leverages the few-shot labeled and massive unlabeled point-cloud data to generate the unified backbone representations that can be directly applied to many baseline models and benchmarks, decoupling the AD-related pre-training process and downstream fine-tuning task. During the period of backbone pre-training, by enhancing the scene- and instance-level distribution diversity and exploiting the backbone's ability to learn from unknown instances, we achieve significant performance gains on a series of downstream perception benchmarks including Waymo, nuScenes, and KITTI, under different baseline models like PV-RCNN++, SECOND, CenterPoint.             
                 </p>
             </div>
         </div>
@@ -214,11 +214,24 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
+                    Drawback of previous 3D pre-training methods
+                </h3>
+                <image src="img/AD-PT-1.png" class="img-responsive" alt="overview"><br>
+                <p class="text-justify">
+                    <strong> Differences between previous pre-training paradigm and the proposed AD-PT paradigm.
+                    </strong>
+                    <!-- (
+                        <a style="color:#000000;" href="https://www.google.com/help/terms_maps/">
+                        ©2021 Google
+                        </a>
+                    ) -->
+                </p>
+                <h3>
                     Framework
                 </h3>
-                <image src="img/UniDA3D.png" class="img-responsive" alt="overview"><br>
+                <image src="img/AD-PT.png" class="img-responsive" alt="overview"><br>
                 <p class="text-justify">
-                    <strong> The network architecture of UniDA3D, which consists of a 3D segmentation baseline, the cross-modality feature interaction module, and the active sampling operation. The 3D segmentation baseline comprises a 2D U-Net-Style ConvNet backbone, which takes an image as input, and a 3D U-Net-Style SparseConvNet backbone, which receives a point cloud as input. Cross-modality feature interaction module can leverage the features to exploit a representative pair of image features and point cloud features to achieve a bi-directional image-point feature interaction. The last active sampling operation utilizes the interactive features to perform both the source-domain sampling and target-domain sampling via the unified module. 
+                    <strong> The overview of the proposed AD-PT. By leveraging the proposed method to train on the unified large-scale point cloud dataset, we can obtain well-generalized pre-training parameters that can be applied to multiple datasets and support different baseline detectors. 
                     </strong>
                     <!-- (
                         <a style="color:#000000;" href="https://www.google.com/help/terms_maps/">
