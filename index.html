@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>3DTrans</title>
+    <title>AD-PT</title>
 
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -48,7 +48,7 @@
         <div class="row">
             <h1 class="col-md-12 text-center">
                 <!-- CityNeRF: Building NeRF at City Scale -->
-                <strong>3DTrans: Autonomous Driving <br> Transfer Learning Codebase</strong>
+                <strong>[NIPS 2023] AD-PT: Autonomous Driving Pre-Training <br> Large-scale Point Cloud Dataset</strong>
                 <!-- <small>CVPR 2023</small> -->
             </h1>
             <!-- <a style="text-align:center" href="https://pjlab-adg.github.io/">ADLab at Shanghai AI Laboratory</a>&nbsp;&nbsp;&nbsp;&nbsp; -->
@@ -57,22 +57,18 @@
         <div class="row">
             <div class="col-md-12 text-center">
                 <div style="margin-bottom: 0.7em; margin-top:0.2em" class="authors">
+                    <a style="color:#000000;" href="https://jiakangyuan.github.io/">Jiakang Yuan<sup>2</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;
                     <a style="color:#000000;" href="https://bobrown.github.io/boZhang.github.io/">Bo Zhang<sup>1</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;
                     <a style="color:#000000;" href="https://sky-fly97.github.io/">Xiangchao Yan<sup>1</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a style="color:#000000;" href="https://jiakangyuan.github.io/">Jiakang Yuan<sup>2</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a style="color:#000000;" href="https://siyuanhuang95.github.io">Renqiu Xia<sup>3</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a style="color:#000000;" href="https://siyuanhuang95.github.io">Haoyang Peng<sup>2</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a style="color:#000000;" href="https://siyuanhuang95.github.io">Siyuan Huang<sup>3</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a style="color:#000000;" href="https://eetchen.github.io/">Tao Chen<sup>1</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;
                     <a style="color:#000000;" href="https://scholar.google.com.hk/citations?user=K0PpvLkAAAAJ&hl=zh-CN">Botian Shi<sup>1</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;
                     <a style="color:#000000;" href="https://liyikang.top/">Yikang Li<sup>1</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;
                     <a style="color:#000000;" href="https://scholar.google.com.hk/citations?user=gFtI-8QAAAAJ&hl=zh-CN">Yu Qiao<sup>1</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;
                 </div>
 
                 <div style="margin-bottom: 0.5em;" class="affiliations">
-                    <a href="https://pjlab-adg.github.io/">ADLab at Shanghai AI Laboratory<sup>1</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="http://fudan.edu.cn/">Fudan University<sup>2</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    </br>
-                    <a href="https://www.mmlab-ntu.com/">Shanghai Jiaotong University<sup>3</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+                    <a href="http://fudan.edu.cn/">Fudan University<sup>1</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="https://pjlab-adg.github.io/">ADLab at Shanghai AI Laboratory<sup>2</sup></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </div>
 <!-- 
                 <div style="margin-bottom: 0.7em;" class="col-md-12 text-center">
@@ -86,110 +82,20 @@
                 <div class="col-md-8 col-md-offset-2 text-center">
                     <ul class="nav nav-pills nav-justified">
                         <li>
-                            <a href="https://arxiv.org/abs/2303.06880">
-                            <image src="./img/paper.png" height="50px"><br>
-                                <h5><strong>Uni3D</strong></h5>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://arxiv.org/abs/2303.05886">
-                            <image src="./img/paper.png" height="50px"><br>
-                                <h5><strong>Bi3D</strong></h5>
-                            </a>
-                        </li>
-                        <li>
                             <a href="https://arxiv.org/abs/2306.00612">
                             <image src="./img/paper.png" height="50px"><br>
-                                <h5><strong>AD-PT</strong></h5>
+                                <h5><strong>AD-PT Paper</strong></h5>
                             </a>
                         </li>
                         <li>
                             <a href="https://github.com/PJLab-ADG/3DTrans">
                             <image src="./img/github_pad.png" height="50px"><br>
-                                <h5><strong>Code</strong></h5>
+                                <h5><strong>AD-PT Code</strong></h5>
                             </a>
                         </li>
                     </ul>
                 </div>
         </div>
-
-
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <h2 class="col-md-12 text-center">
-                    Uni3D: A Unified Baseline for Multi-dataset 3D Object Detection
-                </h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <h3>
-                    Abstract
-                </h3>
-                <!-- <image src="img/Uni3D-teaser" class="img-responsive" alt="overview"><br> -->
-                <p class="text-justify">
-                    Current 3D object detection models follow a single dataset-specific training and testing paradigm, which often faces a serious detection accuracy drop when they are directly deployed in another dataset. In this paper, we study the task of training a unified 3D detector from multiple datasets. We observe that this appears to be a challenging task, which is mainly due to that these datasets present substantial data-level differences and taxonomylevel variations caused by different LiDAR types and data acquisition standards. Inspired by such observation, we present a Uni3D which leverages a simple data-level correction operation and a designed semantic-level couplingand- recoupling module to alleviate the unavoidable datalevel and taxonomy-level differences, respectively. Our method is simple and easily combined with many 3D object detection baselines such as PV-RCNN and Voxel-RCNN, enabling them to effectively learn from multiple off-theshelf 3D datasets to obtain more discriminative and generalizable representations. Experiments are conducted on many dataset consolidation settings including WaymonuScenes, nuScenes-KITTI, Waymo-KITTI, and WaymonuScenes-KITTI consolidations. Their results demonstrate that Uni3D exceeds a series of individual detectors trained on a single dataset, with a 1.04× parameter increase over a selected baseline detector. We expect this work will inspire the research of 3D generalization since it will push the limits of perceptual performance.             
-                </p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <h3>
-                    Framework
-                </h3>
-                <image src="img/Uni3D.png" class="img-responsive" alt="overview"><br>
-                <p class="text-justify">
-                    <strong> The overview of Uni3D including: 1) point range alignment, 2) parameter-shared 3D and 2D backbones with data-level correction operation, 3) semantic-level feature coupling-and-recoupling module, and 4) dataset-specific detection heads. C.A. denotes Coordinate-origin Alignment to reduce the adverse effects caused by point range alignment, and S.A. is the designed Statistics-level Alignment. 
-                    </strong>
-                    <!-- (
-                        <a style="color:#000000;" href="https://www.google.com/help/terms_maps/">
-                        ©2021 Google
-                        </a>
-                        ) -->
-                </p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <h2 class="col-md-12 text-center">
-                    Bi3D: Bi-domain Active Learning for Cross-domain 3D Object Detection
-                </h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <h3>
-                    Abstract
-                </h3>
-                <br>
-                <!-- <image src="img/Uni3D-teaser" class="img-responsive" alt="overview"><br> -->
-                <p class="text-justify">
-                    Unsupervised Domain Adaptation (UDA) technique has been explored in 3D cross-domain tasks recently. Though preliminary progress has been made, the performance gap between the UDA-based 3D model and the supervised one trained with fully annotated target domain is still large. This motivates us to consider selecting partial-yetimportant target data and labeling them at a minimum cost, to achieve a good trade-off between high performance and low annotation cost. To this end, we propose a Bi-domain active learning approach, namely Bi3D, to solve the crossdomain 3D object detection task. The Bi3D first develops a domainness-aware source sampling strategy, which identifies target-domain-like samples from the source domain to avoid the model being interfered by irrelevant source data. Then a diversity-based target sampling strategy is developed, which selects the most informative subset of target domain to improve the model adaptability to the target domain using as little annotation budget as possible. Experiments are conducted on typical cross-domain adaptation scenarios including cross-LiDAR-beam, cross-country, and crosssensor, where Bi3D achieves a promising target-domain detection accuracy (89.63% on KITTI) compared with UDAbased work (84.29%), even surpassing the detector trained on the full set of the labeled target domain (88.98%).             
-                </p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <h3>
-                    Framework
-                </h3>
-                <image src="img/Bi3D.png" class="img-responsive" alt="overview"><br>
-                <p class="text-justify">
-                    <strong> The overview of the proposed Bi3D, which employs PV-RCNN as our baseline and consists of domainness-aware source sampling strategy and diversity-based target sampling strategy. The target-domain-like source data are first selected by the learned domainness score, and then the detector is fine-tuned on the selected source domain data. Next, diverse and representative target data are selected using a similarity bank, and then annotated by an oracle. Finally, the detector is fine-tuned on both the selected source and target data. 
-                    </strong>
-                    <!-- (
-                        <a style="color:#000000;" href="https://www.google.com/help/terms_maps/">
-                        ©2021 Google
-                        </a>
-                        ) -->
-                </p>
-            </div>
-        </div>
-
-
 
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -239,36 +145,50 @@
                         </a>
                         ) -->
                 </p>
+                <h3>
+                    Data preparation and statistical distribution using re-scaling
+                </h3>
+                <image src="img/AD-PT-data.png" class="img-responsive" alt="overview"><br>
+                <p class="text-justify">
+                    <strong> Overall dataset preparation procedure.
+                    </strong>
+                </p>
+                <h3>
+                    Visualization of re-sampling
+                </h3>
+                <image src="img/AD-PT-data.png" class="img-responsive" alt="overview"><br>
+                <p class="text-justify">
+                    <strong> Visualization of point-to-beam playback re-sampling.
+                    </strong>
+                </p>
+                <h3>
+                    Results on Waymo dataset
+                </h3>
+                <image src="img/result-1.png" class="img-responsive" alt="overview"><br>
+                <h3>
+                    Results on nuScenes dataset
+                </h3>
+                <image src="img/result-2.png" class="img-responsive" alt="overview"><br>
+                
             </div>
         </div>
-
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h3>
-                    Sequence-level Visualization
+                    Bibtex
                 </h3>
-                <image src="img/seq_demo_waymo_bev.gif" class="img-responsive" alt="overview"><br>
+                <br>
+                <!-- <image src="img/Uni3D-teaser" class="img-responsive" alt="overview"><br> -->
                 <p class="text-justify">
-                    <strong> Waymo BEV Visualization of our Codebase. 
-                    </strong>
-                    <!-- (
-                        <a style="color:#000000;" href="https://www.google.com/help/terms_maps/">
-                        ©2021 Google
-                        </a>
-                        ) -->
-                </p>
-                <image src="img/seq_demo_waymo_fp.gif" class="img-responsive" alt="overview"><br>
-                    <p class="text-justify">
-                        <strong> Waymo Front-view Visualization of our Codebase. 
-                        </strong>
-                        <!-- (
-                            <a style="color:#000000;" href="https://www.google.com/help/terms_maps/">
-                            ©2021 Google
-                            </a>
-                            ) -->
-                    </p>
+                    @article{yuan2023ad,
+                        title={AD-PT: Autonomous Driving Pre-Training with Large-scale Point Cloud Dataset},
+                        author={Yuan, Jiakang and Zhang, Bo and Yan, Xiangchao and Chen, Tao and Shi, Botian and Li, Yikang and Qiao, Yu},
+                        journal={arXiv preprint arXiv:2306.00612},
+                        year={2023}
+                    }
             </div>
         </div>
+
 
         <!-- <div class="row">
             <div class="col-md-8 col-md-offset-2">
